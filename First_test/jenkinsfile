@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'master',
@@ -46,7 +45,6 @@ pipeline {
                 }
             }
         }
-    }
 
         stage('Docker Build') {
             steps {
@@ -69,11 +67,9 @@ pipeline {
         always {
             junit '*/target/surefire-reports/*.xml'
         }
-
         success {
             echo 'Build Successful'
         }
-
         failure {
             echo 'Build Failed'
         }
